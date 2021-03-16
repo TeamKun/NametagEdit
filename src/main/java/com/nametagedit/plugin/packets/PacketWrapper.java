@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 
 import com.nametagedit.plugin.NametagHandler;
@@ -114,7 +115,16 @@ public class PacketWrapper {
     }
 
     public void send() {
-        PacketAccessor.sendPacket(Utils.getOnline(), packet);
+        List<Player> list = new ArrayList<>(Utils.getOnline());
+        try {
+            for (Player p : list) {
+                if (((Collection) PacketAccessor.MEMBERS.get(packet)).contains(((HumanEntity) p).getName())) {
+                    list.remove(p);
+                }
+            }
+        }catch (Exception e) {
+        }
+        PacketAccessor.sendPacket(list, packet);
     }
 
     public void send(Player player) {
