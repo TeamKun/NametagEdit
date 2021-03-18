@@ -19,15 +19,14 @@ import java.util.UUID;
 
 public class DatabaseConfig implements AbstractConfig {
 
-    private NametagEdit plugin;
-    private NametagHandler handler;
-    private HikariDataSource hikari;
-
     // These are used if the user wants to customize the
     // schema structure. Perhaps more cosmetic.
     public static String TABLE_GROUPS;
     public static String TABLE_PLAYERS;
     public static String TABLE_CONFIG;
+    private NametagEdit plugin;
+    private NametagHandler handler;
+    private HikariDataSource hikari;
 
     public DatabaseConfig(NametagEdit plugin, NametagHandler handler, Configuration config) {
         this.plugin = plugin;

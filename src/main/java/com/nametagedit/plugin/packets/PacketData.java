@@ -19,7 +19,7 @@ enum PacketData {
     v1_14("h", "c", "d", "a", "i", "j", "b", "g", "f", "e"),
     v1_15("h", "c", "d", "a", "i", "j", "b", "g", "f", "e"),
     v1_16("h", "c", "d", "a", "i", "j", "b", "g", "f", "e");
-    
+
     private String members;
     private String prefix;
     private String suffix;

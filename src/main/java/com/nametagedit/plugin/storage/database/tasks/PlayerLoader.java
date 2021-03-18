@@ -1,22 +1,20 @@
 package com.nametagedit.plugin.storage.database.tasks;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.UUID;
-
+import com.nametagedit.plugin.NametagHandler;
+import com.nametagedit.plugin.api.data.PlayerData;
+import com.nametagedit.plugin.storage.database.DatabaseConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.nametagedit.plugin.NametagHandler;
-import com.nametagedit.plugin.api.data.PlayerData;
-import com.nametagedit.plugin.storage.database.DatabaseConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
-import lombok.AllArgsConstructor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.UUID;
 
 @AllArgsConstructor
 public class PlayerLoader extends BukkitRunnable {

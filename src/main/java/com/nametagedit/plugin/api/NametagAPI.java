@@ -19,8 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 public final class NametagAPI implements INametagApi {
 
-    private final NametagHandler handler;
     public final NametagManager manager;
+    private final NametagHandler handler;
 
     @Override
     public FakeTeam getFakeTeam(Player player) {
@@ -104,7 +104,7 @@ public final class NametagAPI implements INametagApi {
 
     @Override
     public void applyTagToPlayer(Player player, boolean loggedIn) {
-        handler.applyTagToPlayer(player,loggedIn);
+        handler.applyTagToPlayer(player, loggedIn);
     }
 
     @Override

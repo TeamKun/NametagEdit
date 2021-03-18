@@ -1,21 +1,15 @@
 package com.nametagedit.plugin;
 
-import java.util.ArrayList;
-
+import com.nametagedit.plugin.api.INametagApi;
+import com.nametagedit.plugin.api.NametagAPI;
+import com.nametagedit.plugin.hooks.*;
+import com.nametagedit.plugin.packets.PacketWrapper;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.nametagedit.plugin.api.INametagApi;
-import com.nametagedit.plugin.api.NametagAPI;
-import com.nametagedit.plugin.hooks.HookGroupManager;
-import com.nametagedit.plugin.hooks.HookGuilds;
-import com.nametagedit.plugin.hooks.HookLibsDisguise;
-import com.nametagedit.plugin.hooks.HookLuckPerms;
-import com.nametagedit.plugin.hooks.HookPermissionsEX;
-import com.nametagedit.plugin.hooks.HookZPermissions;
-import com.nametagedit.plugin.packets.PacketWrapper;
-import lombok.Getter;
+import java.util.ArrayList;
 
 /**
  * TODO:
@@ -34,14 +28,14 @@ public class NametagEdit extends JavaPlugin {
     public static INametagApi getApi() {
         return api;
     }
-    
+
     public static NametagAPI getApi2() {
         return ((NametagAPI) api);
     }
-    
+
     @Override
     public void onEnable() {
-       // testCompat();
+        // testCompat();
         if (!isEnabled()) return;
 
         manager = new NametagManager(this);
@@ -79,7 +73,7 @@ public class NametagEdit extends JavaPlugin {
     }
 
     void debug(String message) {
-        if (handler != null /*&& handler.debug()*/) {
+        if (handler != null && handler.debug()) {
             getLogger().info("[DEBUG] " + message);
         }
     }

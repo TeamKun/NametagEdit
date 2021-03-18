@@ -2,7 +2,6 @@ package com.nametagedit.plugin.hooks;
 
 import com.nametagedit.plugin.NametagHandler;
 import net.luckperms.api.LuckPerms;
-import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.event.EventBus;
 import net.luckperms.api.event.user.UserDataRecalculateEvent;
 import net.luckperms.api.model.user.User;

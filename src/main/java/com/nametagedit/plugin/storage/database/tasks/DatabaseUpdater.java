@@ -15,11 +15,10 @@ import java.sql.SQLException;
 @AllArgsConstructor
 public class DatabaseUpdater extends BukkitRunnable {
 
+    private static final int CURRENT_DATABASE_VERSION = 4;
     private NametagHandler handler;
     private HikariDataSource hikari;
     private NametagEdit plugin;
-
-    private static final int CURRENT_DATABASE_VERSION = 4;
 
     @Override
     public void run() {

@@ -39,10 +39,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 @Setter
 public class NametagHandler implements Listener {
 
+    public static boolean DISABLE_PUSH_ALL_TAGS = false;
     // Multiple threads access resources. We need to make sure we avoid concurrency issues.
     private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-
-    public static boolean DISABLE_PUSH_ALL_TAGS = false;
     private boolean debug;
     @Getter(AccessLevel.NONE)
     private boolean tabListEnabled;
@@ -534,8 +533,7 @@ public class NametagHandler implements Listener {
         UUIDFetcher.lookupUUID(targetName, plugin, (uuid) -> {
             if (uuid == null && sender != null) { // null is passed in api
                 NametagMessages.UUID_LOOKUP_FAILED.send(sender);
-            }
-            else {
+            } else {
                 storePlayerData(uuid, finalData);
                 finalData.setUuid(uuid);
                 abstractConfig.save(finalData);

@@ -136,6 +136,7 @@ public interface INametagApi {
 
     /**
      * Gets the data of all groups
+     *
      * @return list containing all group data
      */
     List<GroupData> getGroupData();
@@ -143,6 +144,7 @@ public interface INametagApi {
 
     /**
      * Saves the provided group data
+     *
      * @param groupData the group data to save
      */
     void saveGroupData(GroupData... groupData);
@@ -162,7 +164,8 @@ public interface INametagApi {
      * Note: Only affects memory, does NOT
      * add/remove from storage
      * </p>
-     * @param player the player to apply nametag to
+     *
+     * @param player   the player to apply nametag to
      * @param loggedIn is the player logged in
      */
     void applyTagToPlayer(Player player, boolean loggedIn);
@@ -173,6 +176,7 @@ public interface INametagApi {
      * Note: Does affect memory. Automatically applies tags to player
      * so no applyTags call is necessary
      * </p>
+     *
      * @param target name of the player to update tag of
      * @param prefix prefix to change to
      */
@@ -184,6 +188,7 @@ public interface INametagApi {
      * Note: Does affect memory. Automatically applies tags to player
      * so no applyTags call is necessary
      * </p>
+     *
      * @param target name of the player to update tag of
      * @param suffix suffix to change to
      */
@@ -195,6 +200,7 @@ public interface INametagApi {
      * Note: Does affect memory. Automatically applies tags to player
      * so no applyTags call is necessary
      * </p>
+     *
      * @param target name of the player to update tag of
      * @param prefix prefix to set to
      * @param suffix suffix to set to

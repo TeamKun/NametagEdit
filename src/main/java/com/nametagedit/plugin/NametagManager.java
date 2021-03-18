@@ -1,20 +1,14 @@
 package com.nametagedit.plugin;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
+import com.nametagedit.plugin.api.data.FakeTeam;
+import com.nametagedit.plugin.packets.PacketWrapper;
 import com.nametagedit.plugin.utils.Utils;
+import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import com.nametagedit.plugin.api.data.FakeTeam;
-import com.nametagedit.plugin.packets.PacketWrapper;
-
-import lombok.AllArgsConstructor;
+import java.util.*;
 
 @AllArgsConstructor
 public class NametagManager {
@@ -138,8 +132,8 @@ public class NametagManager {
             if (fakeTeam.getMembers().contains(player.getName())) {
                 ArrayList<String> mems = new ArrayList<>(fakeTeam.getMembers());
                 mems.remove(player.getName());
-                new PacketWrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 0,mems ).send(player);
-            } else{
+                new PacketWrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 0, mems).send(player);
+            } else {
                 new PacketWrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 0, fakeTeam.getMembers()).send(player);
             }
 
@@ -186,7 +180,7 @@ public class NametagManager {
     }
 
     private void addPlayerToTeamPackets(FakeTeam fakeTeam, String player) {
-        for (Player p : Utils.getOnline()){
+        for (Player p : Utils.getOnline()) {
             if (player.equals(p.getName())) continue;
             new PacketWrapper(fakeTeam.getName(), 3, Collections.singletonList(player)).send(p);
         }

@@ -1,22 +1,17 @@
 package com.nametagedit.plugin.packets;
 
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
+import com.nametagedit.plugin.NametagHandler;
+import com.nametagedit.plugin.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import com.nametagedit.plugin.NametagHandler;
-import com.nametagedit.plugin.utils.Utils;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class PacketWrapper {
-
-    public String error;
-    private Object packet = PacketAccessor.createPacket();
 
     private static Constructor<?> ChatComponentText;
     private static Class<? extends Enum> typeEnumChatFormat;
@@ -35,6 +30,9 @@ public class PacketWrapper {
         }
     }
 
+    public String error;
+    private Object packet = PacketAccessor.createPacket();
+
     public PacketWrapper(String name, int param, List<String> members) {
         if (param != 3 && param != 4) {
             throw new IllegalArgumentException("Method must be join or leave for player constructor");
@@ -47,16 +45,16 @@ public class PacketWrapper {
     public PacketWrapper(String name, String prefix, String suffix, int param, Collection<?> players) {
         setupDefaults(name, param);
         if (param == 0 || param == 2) {
-            try {            	            	
+            try {
                 if (PacketAccessor.isLegacyVersion()) {
                     PacketAccessor.DISPLAY_NAME.set(packet, name);
                     PacketAccessor.PREFIX.set(packet, prefix);
                     PacketAccessor.SUFFIX.set(packet, suffix);
-                } else {					
+                } else {
                     String color = ChatColor.getLastColors(prefix);
                     String colorCode = null;
 
-                    if (!color.isEmpty()) {						
+                    if (!color.isEmpty()) {
                         colorCode = color.substring(color.length() - 1);
                         String chatColor = ChatColor.getByChar(colorCode).name();
 
@@ -116,7 +114,7 @@ public class PacketWrapper {
 
     public void send() {
         PacketAccessor.sendPacket(Utils.getOnline(), packet);
-        }
+    }
 
     public void send(Player player) {
         PacketAccessor.sendPacket(player, packet);
