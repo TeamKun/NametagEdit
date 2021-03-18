@@ -62,7 +62,7 @@ public class NametagEdit extends JavaPlugin {
         getCommand("ne").setExecutor(new NametagCommand(handler));
 
         if (api == null) {
-            api = new NametagAPI(handler, manager);
+            api = new NametagAPI(manager, handler);
         }
     }
 
